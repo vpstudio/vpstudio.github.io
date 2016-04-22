@@ -241,3 +241,11 @@ body {
 	width: 100%;
 	left: 0px;
 }
+
+.slimage {
+	height: 90%;
+	position: relative;
+	top: 5%;
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+}
