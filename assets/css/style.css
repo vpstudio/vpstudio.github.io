@@ -248,4 +248,11 @@ body {
 	top: 5%;
 	left: 50%;
 	-webkit-transform: translateX(-50%);
+	-webkit-transition: 300ms;
+
+}
+
+.slimage:hover {
+	top:0%;
+	height: 100%;
 }
