@@ -17,6 +17,7 @@ body {
 	position: relative;
 	height: 100%;
 	min-width: 900px;
+	z-index: 100;
 }
 #top-background {
 	z-index: 1000;
@@ -33,6 +34,7 @@ body {
 	left: 50%;
 	transform: translateX(-400px);
 }
+
 
 #img-cont {
 	position: relative;
@@ -106,24 +108,29 @@ body {
 	position: fixed;
 	background-color: rgba(200,200,200,1);
 	box-shadow: 2px 0px 2px rgba(200,200,200,1);
-	width: 160px;
+	width: 140px;
 	height: calc(100% - 60px);
-	display: none;
-	overflow: scroll;
+	transition: 300ms;
+	overflow: auto;
+	z-index: 50000;
 }
+
+.side-bar-active {
+	-webkit-transform: translateX(-100%);
+}
+
 #link {
 	position: relative;
-	left: 10px;
+	left: 5px;
 	width: 110px;
-	margin-top: 10px;
-	margin-bottom: 10px;
-	text-align: center;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	text-align: right;
 	padding: 10px;
 	color: black;
-	background-color: rgba(0,0,0,.2);
 	border-radius: 5px;
-	font-size: 15px;
-	transition: 300ms;
+	font-size: 12px;
+	font-weight: 700;
 }
 
 #link:hover {
