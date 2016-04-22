@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800' rel='stylesheet' type='text/css'>
+	<script src="assets/js/jquery-1.9.1.js"></script>
+	<script src="assets/js/script.js"></script>
+	<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML">
+</script>
+</head>
+
+<body>
+	<div id = "background-overlay"> 
+		<div id = "top-background"> 
+			<div id = "top-bar"> 
+			<img src="assets/img/menu.svg" id = "menu-item">
+			<a href="index.html"><img src="assets/img/VPS_Logo_NoBackground.png" id = "logo"></a>
+			<div id = "about-us">
+				About Us
+			</div>
+		</div>
+		</div>
+		<div id = "side-bar"> 
+			<a href="executivesummary.html"><div id="link" >Executive Summary</div></a>
+			<a href="introduction.html"><div id="link" >Introduction</div></a>
+			<a href="specifications.html"><div id="link" >Specifications</div></a>
+			<a href="conceptgen.html"><div id="link" >Concept Generation</div></a>
+			<a href="conceptsel.html"><div id="link" >Concept Selection</div></a>
+			<a href="conceptdesc.html"><div id="link" >Concept Description</div></a>
+			<a href="plan.html"><div id="link" >Plan</div></a>
+			<div id="link" >Problem Analysis</div>
+			<a href="paramanalysis.html"><div id="link" >Parameter Analysis</div></a>
+			<a href="finaldesign.html"><div id="link" >Final Design</div></a>
+			<a href="conclusion.html"><div id="link" >Conclusion</div></a>
+		</div>
+		<div id = "content">
+			<div id = "main-title">
+				Problem Analysis
+			</div>
+			<div id = "exec-summary">
+				<div id = "text">
+					The Leap Motion sensor is a great tool and has many pre-built structures and interfaces, yet it can limit us because we do not have access to modify its base code and hardware to gain more flexibility. The Leap Motion sensor is designed to track fingers and hands, so we would need to somehow modify its software so it can identify the tip of a drumstick -- currently if we hold a stick in our hand, the Leap Motion sensor would see a hand with a finger sticking out. 
+				</div>
+				<div id = "text">
+					However, after some preliminary testing, we have found that the Leap Motion sensor can track motion fast enough for our application, with a maximum frame rate of 115 Hz, well above the 20 Hz requirement. This should allow us to accurately measure position and acceleration of the drumsticks to determine strikes. We will need to ensure that the software used to analyze the raw data from the Leap sensor does not add an appreciable delay to make the VPS as realistic as possible. 
+				</div>
+				<div id = "text">
+					Another issue is the limited sensing volume of the Leap sensor. We want the “air drums” to be placed at similar locations to their real drum counterparts to give users the realistic experience. This may be tricky, though it should be resolved with careful placement of the Leap sensor.
+				</div>
+				<div id = "img-cont">
+					<img src="assets/img/leap_motion_interaction_area.png" id = "background">
+				</div>	
+				<div id = "text">
+					We must also tackle reproducing the feeling of striking a “real drum”. Many traditional drumming techniques rely on the rebounding of the stick off the drum head. This bounce allows for faster drumming.  Several methods of replicating this effect include adding small spring near the palm and integrating a vibrating motor inside the stick. However, we do not wish to make the stick overly bulky or unwieldy for the user.
+				</div>
+				
+			</div>
+		</div>
+	</div>
+</body>
+</html>

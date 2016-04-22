@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800' rel='stylesheet' type='text/css'>
+	<script src="assets/js/jquery-1.9.1.js"></script>
+	<script src="assets/js/script.js"></script>
+	<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML">
+</script>
+</head>
+
+<body>
+	<div id = "background-overlay"> 
+		<div id = "top-background"> 
+			<div id = "top-bar"> 
+			<img src="assets/img/menu.svg" id = "menu-item">
+			<a href="index.html"><img src="assets/img/VPS_Logo_NoBackground.png" id = "logo"></a>
+			<div id = "about-us">
+				About Us
+			</div>
+		</div>
+		</div>
+		<div id = "side-bar"> 
+			<a href="executivesummary.html"><div id="link" >Executive Summary</div></a>
+			<a href="introduction.html"><div id="link" >Introduction</div></a>
+			<a href="specifications.html"><div id="link" >Specifications</div></a>
+			<a href="conceptgen.html"><div id="link" >Concept Generation</div></a>
+			<a href="conceptsel.html"><div id="link" >Concept Selection</div></a>
+			<div id="link" >Concept Description</div>
+			<a href="plan.html"><div id="link" >Plan</div></a>
+			<a href="probanalysis.html"><div id="link" >Problem Analysis</div></a>
+			<a href="paramanalysis.html"><div id="link" >Parameter Analysis</div></a>
+			<a href="finaldesign.html"><div id="link" >Final Design</div></a>
+			<a href="conclusion.html"><div id="link" >Conclusion</div></a>
+		</div>
+		<div id = "content">
+			<div id = "main-title">
+				Concept Description
+			</div>
+			<div id = "exec-summary">
+				<div id = "text">
+					The Virtual Percussive Studio will combine the <em>Drum Hero</em> and <em>Drumkit on the Go</em> concepts into a portable, cost effective, and functional drum experience. The user will use two sticks in conjunction with a motion tracking unit to spatially select which drum sounds should be produced. Below is an operational diagram of our proposed product.
+				</div>
+				
+				<div id = "img-cont">
+					<img src="assets/img/operationalDiagram.png" id = "background">
+				</div>	
+				<div id = "text">
+					All of the motion tracking will be performed by the Leap Motion sensor. This device can already track a pair of human hands reliably, and various Application Programming Interfaces (APIs) that have been developed allowing us to interface with the device through Python, Java, C++, as well as other languages. The Leap sensor will be connected to a laptop computer that will perform computations and produce the desired sounds.		
+				</div>
+				<div id = "text">
+					The user will use the two included drumsticks to "tap" or "strike" a specific area in space. This motion will be captured by the Leap sensor, and will be analyzed by software to determine the location and acceleration of both drum sticks. Once the acceleration of a drum stick passes a pre-set threshold, the system will interpret the motion of that stick as a "strike", and the software will use the position data to select an appropriate sound. 
+				</div>
+				<div id = "text">
+					All sounds will be processed using the MIDI technical standard. This will grant interchangeability to all sounds used throughout the system, which in turn will allow us to give users the ability to customize their drum kits. The VPS will accept “Library” files which will specify the desired sound output, which is not limited to traditional “drum” sounds. Users can add different instruments, synthetic sounds, or short clips to create a totally unique experience.				
+				</div>
+				<div id = "text">
+					Users will also be able to customize the layout of their drum kit. As seen in the figure below, the user can select the location of each drum, as well as add additional drums. Each circle can be dragged into position to select the approximate spatial region used by each drum.
+				</div>
+				<div id = "img-cont">
+					<img src="assets/img/customizeSet.png" id = "background">
+				</div>	
+				<div id = "text">
+					To further improve the user experience, multiple "modes" will be created. The standard "Play" mode gives the user the freedom to hit any drum and create whatever pattern they chose. The "Tutorial" or "Training" mode gives the user a pre-programmed sequence of notes designed to teach basic drumming techniques. Users will receive visual and haptic feedback based on their performance. The "Battle" mode will allow users to challenge their friends to a "Drum Off" to decide once and for all who is the best drummer.
+				</div>
+				<div id = "img-cont">
+					<img src="assets/img/instructionalFeedback.png" id = "background">
+				</div>	
+			</div>
+		</div>
+	</div>
+</body>
+</html>

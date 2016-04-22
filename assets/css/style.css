@@ -1,235 +1,132 @@
-/* Please read through the provided code below to understand it */
+/* Home */
 
-/* QUESTION #3: PLACE SIDEBAR STYLES BELOW */
-
-
-/* QUESTION #4: PLACE CAROUSEL STYLES BELOW */
-
-
-/* QUESTION #5: PLACE "OTHER CSS" STYLES BELOW */
-
-
-/* DOCUMENT SET UP */
-
-body, html {
-	margin: 0 auto;
+body {
+	overflow: scroll;
+	overflow-x: hidden;
+	margin: 0px;
+	color: black;
+	font-family: Open Sans;
 	width: 100%;
 	height: 100%;
-	min-width: 960px;
-	background-color: black;
-	-webkit-font-smoothing: antialiased;
-	-o-font-smoothing: antialiased;
-	font-smoothing: antialiased;
-	font-family: Lato;
+	background-size: cover;
+	text-align: left;
+	overflow: auto;
 }
 
-a {
-	text-decoration: none;
-}
-
-.clear {
-	clear: both;
-}
-
-.img-scaled {
-	width: 100%;
-	height: 100%;
-}
-
-.img-scaled-wh {
-	width: 100%;
-	height: 100%;
+#background-overlay {
 	position: relative;
+	height: 100%;
+	min-width: 900px;
+}
+#top-background {
+	z-index: 1000;
+	width: 100%;
+	height: 60px;
+	background-color: white;
+}
+#content {
+	position: relative;
+	z-index: -1000;
+	top: 60px;
+	width: 800px;
+	height: 100%;
+	left: 50%;
+	transform: translateX(-400px);
 }
 
-/* YOU DON'T NEED TO UNDERSTAND THE CODE BELOW */
-
-#nav-toggle { 
-	position: absolute; 
-	left: 50%; top: 50%; 
-}
-
-#nav-toggle {
-	padding: 10px 30px 15px 0px; 
-}
-
-#nav-toggle span, #nav-toggle span:before, #nav-toggle span:after {
-	height: 3px;
-	width: 30px;
-	background: #fff;
-	position: absolute;
-	display: block;
-	content: '';
-}
-
-#nav-toggle span:before {
-	top: -10px; 
-}
-
-#nav-toggle span:after {
-	bottom: -10px;
-}
-
-/* FREEBIES */
-
-/* Styling the Sidebar Button */
-#sidebar-button {
-	position: fixed;
-	z-index: 100;
-	left: 15px;
-	top: 15px;
-	cursor: pointer;
-	-webkit-transition: all .3s;
-	-moz-transition: all .3s;
-	-o-transition: all .3s;
-	transition: all .3s;
-} 
-
-/* Overriding default styles on the ul */
-.sidebar-container ul {
-	margin: 0;
-	padding: 0;
-	list-style: none;
-	margin-top: 10px;
-}
-
-.page-wrapper {
+#img-cont {
+	position: relative;
 	height: 100%;
 	width: 100%;
-	-webkit-transition: all .3s;
-	-moz-transition: all .3s;
-	transition: all .3s;
 }
 
-/* Styling for the carousel previous button */
-#carousel-prev {
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    padding: 10px;
-    left: 60px;
-    top: 50%;
-    margin-top: -30px;
-    cursor: pointer;
-    border-radius: 50%;
-    border: 1px solid #fff;
-    -webkit-transition: all 0.3s;
+
+#background {
+	width: 800px;
+	margin-bottom: 20px;
+	border-radius: 5px;
 }
 
-/* Styling for the carousel next button */
-#carousel-next {
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    padding: 10px;
-    right: 60px;
-    top: 50%;
-    margin-top: -30px;
-    cursor: pointer;
-    border-radius: 50%;
-    border: 1px solid #fff;
-    -webkit-transition: all 0.3s;
+#top-bar {
+	z-index: 10000;
+	position: fixed;
+	width: 100%;
+	background-color: rgba(200,200,200,1);
+	height: 60px;
+	box-shadow: 0px 2px 2px rgba(200,200,200,1);
 }
 
-/* Styling for the quotes and text in each section */
-.quote, .text {
+#menu-item {
 	position: absolute;
-	font-size: 36px;
-	color: white;
-	font-weight: 700;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translateX(-50%) translateY(-50%);
-    -moz-transform: translateX(-50%) translateY(-50%);
-   	transform: translateX(-50%) translateY(-50%);
+	cursor: pointer;
+	left: 50px;
+	top: 10px;
+	width: 40px;
+}
+#logo {
+	position: absolute;
+	left: 50%;
+	width: 120px;
+	transform: translateX(-60px);
 }
 
-/* Styling for the author text in each quote */
-.author {
-	font-size: 12px;
-	font-weight: 700;
-	letter-spacing: .2rem;
-	text-transform: uppercase;
-	margin-top: 10px;
+#about-us {
+	position: absolute;
+	right: 50px;
+	top: 10px;
+	font-size: 25px;
+
+}
+
+#main-title {
+	z-index: -1000;
+	color: black;
+	font-size: 50px;
 	text-align: center;
 }
 
-/* jQuery Manipulation Classes */
-
-.no-scroll {
-	overflow: hidden;
+#sub-title {
+	margin-top: 5px;
+	margin-bottom: 15px;
+	color: black;
+	font-size: 30px;
+	text-align: center;
 }
 
-.wrapper-active, .button-active {
-	-webkit-transform: translateX(280px);
-	-moz-transform: translateX(280px);
-	transform: translateX(280px);
+#exec-summary{
+	font-size: 20px;
 }
 
-
-
-.sidebar-container{
+#text {
+	margin-top: 5px;
+	margin-bottom: 5px;
+	text-indent: 50px;
+}
+#side-bar {
 	position: fixed;
-	width: 280px;
-	height: 100%;
-	background-color: black;
-	-webkit-transition: all 0.3s;
-	-webkit-transform: translateX(-280px);
-	z-index: 10000;
+	background-color: rgba(200,200,200,1);
+	box-shadow: 2px 0px 2px rgba(200,200,200,1);
+	width: 160px;
+	height: calc(100% - 60px);
+	display: none;
+	overflow: scroll;
 }
-.sidebar-active {
-	-webkit-transform: translateX(0px);
-	-moz-transform: translateX(0px);
-	-o-transform: translateX(0px);
-}
-.sidebar-item{
-	font-weight: 700;
-	font-size: 16px;
-	color: white;
-	padding: 15px 20px;
-}
-
-.carousel-container{
-	width: 960px;
-	margin: 0px auto;
-	height: 500px;
-	overflow: hidden;
+#link {
 	position: relative;
+	left: 10px;
+	width: 110px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	text-align: center;
+	padding: 10px;
+	color: black;
+	background-color: rgba(0,0,0,.2);
+	border-radius: 5px;
+	font-size: 15px;
+	transition: 300ms;
 }
 
-#carousel{
-	width: 4800px;
-	height: 100%;
-	margin-left: 0px;
-	-webkit-transition: all 0.3s;
+#link:hover {
+	box-shadow: 2px 2px 2px #888888;
 }
 
-.carousel-item{
-	width: 960px;
-	position: relative;
-	height: 100%;
-	float: left;
-}
-
-.section{
-	width: 100%;
-	height: 500px;
-	position: relative;
-}
-
-#name-section {
-	background-color: #2bde73;
-
-}
-#major-section {
-	background-color: #8bb2af;
-	
-}
-#fact-section {
-	background-color: #fff;
-	
-}
-#fact-text {
-	color: rgba(0,0,0,1)
-	
-}
