@@ -7,14 +7,17 @@ $("#menu-item").click(function(){
 		$(".content-overlay").removeClass("content-overlay-active");
     caroulwidth = parseInt($('#carousel').css('width').replace("px", ""))/5;
     locs = [0, caroulwidth * -1, caroulwidth * -2, caroulwidth * -3, caroulwidth * -4];
-    $("#carousel").css('margin-left',locs[count]);
+    setTimeout(function() {
+      $("#carousel").css('margin-left',locs[count]);
+    }, 200);
 	} else {
 		$("#side-bar").addClass("side-bar-active");
 		$(".content-overlay").addClass("content-overlay-active");
     caroulwidth = parseInt($('#carousel').css('width').replace("px", ""))/5;
     locs = [0, caroulwidth * -1, caroulwidth * -2, caroulwidth * -3, caroulwidth * -4];
-    $("#carousel").css('margin-left',locs[count]);
-
+    setTimeout(function() {
+      $("#carousel").css('margin-left',locs[count]);
+    }, 200);
     }
 
 });
