@@ -89,6 +89,7 @@ body {
 	right: 50px;
 	top: 10px;
 	font-size: 25px;
+	color: black;
 
 }
 
@@ -257,4 +258,36 @@ body {
 .slimage:hover {
 	top:0%;
 	height: 100%;
+}
+.about-block {
+	position: relative;
+	height: 500px;
+	width: 100%;
+	background-color: #E0E0E0;
+	top: 110px;
+}
+
+.about-blockt1 {
+	background-color: #EEEEEE;
+}
+
+.about-cont {
+	position: relative;
+	width: 800px;
+	left: 50%;
+	top: 50%;
+	-webkit-transform: translate(-50%,-50%);
+
+}
+.about-pic {
+	width: 200px;
+	border-radius: 5px;
+	float: left;
+	margin-right: 20px;
+	margin-bottom: 10px;
+}
+
+.about-name {
+	text-align: center;
+	font-size: 40px;
 }
