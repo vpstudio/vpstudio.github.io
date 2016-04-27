@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title>VPS - Specifications</title>
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800' rel='stylesheet' type='text/css'>
+	<script src="assets/js/jquery-1.9.1.js"></script>
+	<script src="assets/js/script.js"></script>
+	<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML">
+</script>
+</head>
+
+<body>
+	<div id = "background-overlay"> 
+		<div id = "top-background"> 
+			<div id = "top-bar"> 
+			<img src="assets/img/menu.svg" id = "menu-item">
+			<a href="index.html"><img src="assets/img/VPS_Logo_NoBackground.png" id = "logo"></a>
+			<a href="aboutus.html"><div id="about-us" >About Us</div></a>
+		</div>
+		</div>
+		<div id = "side-bar" class = "side-bar-active"> 
+			<a href="executivesummary.html"><div id="link" >Executive Summary</div></a>
+			<a href="introduction.html"><div id="link" >Introduction</div></a>
+			<div id="link" >Specifications</div>
+			<a href="conceptgen.html"><div id="link" >Concept Generation</div></a>
+			<a href="conceptsel.html"><div id="link" >Concept Selection</div></a>
+			<a href="conceptdesc.html"><div id="link" >Concept Description</div></a>
+			<a href="plan.html"><div id="link" >Plan</div></a>
+			<a href="probanalysis.html"><div id="link" >Problem Analysis</div></a>
+			<a href="paramanalysis.html"><div id="link" >Parameter Analysis</div></a>
+			<a href="finaldesign.html"><div id="link" >Final Design</div></a>
+			<a href="conclusion.html"><div id="link" >Conclusion</div></a>
+			<a href="appendix.html"><div id="link" >Appendix</div></a>
+		</div>
+		<div class = "content-overlay content-overlay-active">
+		<div id = "content">
+			<div id = "main-title">
+				Specifications
+			</div>
+			<div id = "exec-summary">
+				<div id = "text">
+					The Quality Function Deployment (12) was used to identify the relationship between customer needs, potential product specifications, and technical requirements for the Virtual Percussive Studio. The full QFD for the Virtual Percussive Studio can be found in the Appendix. 
+				</div>
+				<div id = "text">
+					The target audience for the VPS is the average young adult, with limited musical experience. Customer specifications were derived from both physical and non-physical requirements, such as the need for the product to be realistic, lightweight, and affordable, but must also emit varying drum sounds depending on drum stick position. The system must also provide both intellectual and physical feedback to the user, through training or tutorial modes and haptic feedback.
+				</div>
+				<div id = "text">
+					These specifications translate to real engineering requirements for the VPS. A responsive drum system requires a stick tracking system operating faster than 20 Hz [1]. To be portable and realistic, the drumsticks must remain similar to the traditional wooden variety. The volume and weight of the sticks cannot increase by a dramatic amount, and they must remain well balanced to ensure the user has control. To minimize effect on the user, any modifications to the drum sticks (or gloves) should not change their volume by more than 10%, or shift the center of mass by more than 10%. Additionally, the entire system should not exceed a weight of 2 pounds and should contain as few distinct parts as possible to ensure the device is portable. Because the VPS is a mobile system, the motion tracking unit must function in a variety of lighting conditions.
+				</div>
+				<div id = "text">
+					Developing a system to meet these requirements is challenging, as evidenced by the general lack of competitors. There are YouTube videos of people attempting such a product but using clunky and unattractive hardware systems. The Aerodrums Air Drumming Percussion Instrument is the only competition produced by a private company, but remains limited. The device cannot provide visual or physical feedback to users, and cannot be used in brightly light areas due to limitations of the PlayStation Eye. Additionally, when used in dim conditions the system requires the use of a bright light, hence the provided eye protection. Below is an image of the Aerodrums product that we aim to compete with and improve upon.
+				</div>
+				<figure>
+  					<img src="assets/img/aeroDrums.png" id = "img-cont">
+  					<figcaption>Figure 1: AeroDrum's product.</figcaption>
+				</figure>
+				
+			</div>
+		</div>
+	</div>
+	</div>
+</body>
+</html>
