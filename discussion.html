@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title>VPS - Conclusion</title>
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800' rel='stylesheet' type='text/css'>
+	<script src="assets/js/jquery-1.9.1.js"></script>
+	<script src="assets/js/script.js"></script>
+	<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML">
+</script>
+</head>
+
+<body>
+	<div id = "background-overlay"> 
+		<div id = "top-background"> 
+			<div id = "top-bar"> 
+			<img src="assets/img/menu.svg" id = "menu-item">
+			<a href="index.html"><img src="assets/img/VPS_Logo_NoBackground.png" id = "logo"></a>
+			<a href="aboutus.html"><div id="about-us" >About Us</div></a>
+		</div>
+		</div>
+		<div id = "side-bar" class = "side-bar-active"> 
+			<a href="executivesummary.html"><div id="link" >Executive Summary</div></a>
+			<a href="introduction.html"><div id="link" >Introduction</div></a>
+			<a href="specifications.html"><div id="link" >Requirements/ Specifications</div></a>
+			<a href="conceptgen.html"><div id="link" >Concept Generation</div></a>
+			<a href="conceptsel.html"><div id="link" >Concept Selection</div></a>
+			<a href="conceptdesc.html"><div id="link" >Concept Description</div></a>
+			<a href="paramanalysis.html"><div id="link" >Engineering Analysis/Design</div></a>
+			<a href="manufacturing.html"><div id="link" >Manufacturing and Testing</div></a>
+			<div id="link" >Discussion</div>
+			<a href="conclusion.html"><div id="link" >Conclusion</div></a>
+			<a href="appendix.html"><div id="link" >Appendix</div></a>
+		</div>
+		<div class = "content-overlay content-overlay-active">
+		<div id = "content">
+			<div id = "main-title">
+				Discussion
+			</div>
+			<div id = "exec-summary">
+				<div id = "text">
+					The strong points of our project are certainly its marketability and its interactiveness. Our project consists of a software interface, a Leap motion sensor, a pair of modified sticks with haptic feedback and a kick drum unit. In fact, it can even be used in a reduced form with only the software and the Leap motion sensor. The user can use regular drum sticks or just a pair of pencils. As long as the user buys the Leap motion sensor themselves they can easily download the project and start drumming, which makes our project extremely accessible. We were pleased to find that our project successfully engages the user, as evidenced by the numerous smiles of people drumming at the demo. The haptic feedback and the kick drum make the user feel that they are not simply playing a virtual game, but a physical instrument. Our goal was to use our engineering knowledge to make a fun, interactive product and we succeeded!
+				</div>
+				<figure>
+  					<img src="assets/img/kidpic.jpg" id = "img-cont">
+  					<figcaption>Figure 13: A four year old (successfully) using the VPS at the ME 102B project expo.</figcaption>
+				</figure>
+				<div id = "text">
+					Since we increased our focus towards adding more hardware into the project we didn't have enough time to add more features to the software side and attack our more ambitious goals: creating a product that isn't just interactive, but also instructional (it could even be made into a full augmented reality experience). The next step in the software development is certainly the tutorial mode, which could really elevate the functionality and popularity of this product. We would also allow the user to customize where their drums are positioned and what sounds their drums make (this was already implemented, but wasn't stable enough for us to display at the expo). A potential improvement over our current software is the optimization of the Unity project - there are functions such as static batching which can reduce the rendering calls and therefore improve the software performance by reducing latency. 
+				</div>
+				<div id = "text">
+					The kick pedal had some minor issues with usability. One thing we neglected to account for was that the kick pedal should produce sound at the bottom of the press, rather than on the release. During the design expo, we found that a lot of users found our implementation unintuitive, so some minor modifications to the kick drum Arduino code are warranted. The haptic feedback using pager motors triggered by accelerometers on the drumstick tips, however, worked near flawlessly.
+				</div>
+				<div id = "text">
+					The project as a whole was rather inexpensive - less than $\$$150 was spent on all components, and $\$$60 of that was for the Leap Motion. If a user already owns the sensor, then the cost becomes essentially zero cost. The majority of the cost of the haptic feedback enabled sticks is the drumsticks themselves. If the sticks were to be made in bulk, the could be modified such that the wires were contained and priced somewhere not far above traditional drum sticks.
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+</body>
+</html>

@@ -2,7 +2,7 @@
 
 <html>
 <head>
-	<title>VPS - Parameter Analysis</title>
+	<title>VPS - Engineering Analysis/Design</title>
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800' rel='stylesheet' type='text/css'>
 	<script src="assets/js/jquery-1.9.1.js"></script>
@@ -27,65 +27,131 @@
 		<div id = "side-bar" class = "side-bar-active"> 
 			<a href="executivesummary.html"><div id="link" >Executive Summary</div></a>
 			<a href="introduction.html"><div id="link" >Introduction</div></a>
-			<a href="specifications.html"><div id="link" >Specifications</div></a>
+			<a href="specifications.html"><div id="link" >Requirements/ Specifications</div></a>
 			<a href="conceptgen.html"><div id="link" >Concept Generation</div></a>
 			<a href="conceptsel.html"><div id="link" >Concept Selection</div></a>
 			<a href="conceptdesc.html"><div id="link" >Concept Description</div></a>
-			<a href="plan.html"><div id="link" >Plan</div></a>
-			<a href="probanalysis.html"><div id="link" >Problem Analysis</div></a>
-			<div id="link" >Parameter Analysis</div>
-			<a href="finaldesign.html"><div id="link" >Final Design</div></a>
+			<div id="link" >Engineering Analysis/Design</div>
+			<a href="manufacturing.html"><div id="link" >Manufacturing and Testing</div></a>
+			<a href="discussion.html"><div id="link" >Discussion</div></a>
 			<a href="conclusion.html"><div id="link" >Conclusion</div></a>
 			<a href="appendix.html"><div id="link" >Appendix</div></a>
 		</div>
 		<div class = "content-overlay content-overlay-active">
 		<div id = "content">
 			<div id = "main-title">
-				Parameter Analysis and Component Selection
+				Engineering Analysis/Design
 			</div>
 			
-			<div id = "parameter-analysis">
+			<div id = "exec-summary">
 				<div id = "sub-title">
-					Controller and Position Sensor Frequency
+					Modified Drumsticks
 				</div>
 				<div id = "text">
-					The world's fastest drummer can make 20 hits per second (a frequency of 20 Hz) [1]. If our position sensor can sample at more than twice the frequency of this motion, by Nyquist sampling theorem, we should be to track the position changes well enough--especially when we are only interested a general region the drum stick tip would fall in rather than an accurate physical position. The leap motion sensor has a maximum sampling rate (frame rate) of 115 Hz according to our preliminary testing, which meets our requirement. That will also be the controller frequency because the frame rate of the leap motion sensor dictates how fast we can update the software interface.
+					The stick setup for VPS is a closed system that combines the accelerometer data with a microcontroller (Arduino) that sets off the pager motors once the acceleration hits a particular threshold. The motivation for this design was to allow for haptic feedback. Accelerometers are mounted to the stick tips which trigger pager motors imbedded in the other end of the stick. The accelerometers used are the ADXL345 since they use the I2C protocol, which allowed for fewer wires. We were also able to use the alternate address setup, which allowed us to use only one Arduino to read information from both sticks. 
+				</div>
+				<div id = "text">
+					Although the accelerometer is not fully necessary for the implementation of an air drum set, it will allow us to (1) create a methodology for feedback and triggering, (2) allow us to decrease the latency between the physical motion and the sound output and (3) increase resolution of acceleration data for better amplitude differentiation. 
+				</div>
+				<div id = "text">
+					In selecting the type of accelerometer, we must take a variety of characteristics into account. First of all, the device must be small because we are attaching it to a pair of drumsticks. The size is important because we want to maintain a sleek form factor that is not going to distract from the general use of the device. One of the fundamental classifications for accelerometers is how many directions of measurements the chip takes (axes). For our case, the minimum we should have is a 2-axis accelerometer. This is because we are only really interested in the planar acceleration perpendicular to the drumstick. Despite this, there is a lot more availability of 3-axis accelerometers. Furthermore, in order to decrease latency, we looked for accelerometers with an Serial Peripheral Interface protocol setup, which provides the fastest sampling frequency among other common protocols such as I2C and UART. The last quality necessary in the accelerometer is the acceleration range. Reference [9] found that the range of accelerations we should expect is from 0-7 g's (relative to Earth's standard gravity). Although this article contains data from trials, we found that we were successfully able to differentiate accelerations with a $\pm$ 16g range.
+				</div>
+				<div id = "text">
+					We ultimately decided upon using the ADXL345 for several reasons. First of all, it satisfies all the conditions delineated in the previous paragraph. It seems to be a general purpose 3-axis SPI accelerometer with the added advantage that there are pre-written Arduino codes to process the information. Additionally, it has an adjustable range so if we were able to play with parameters and increase it to $\pm$ 16g range. 
+				</div>
+				<div id = "text">
+					The pager motor, was chosen to fit inside the butt of the drumstick. The heaviest standard drumstick (size 5A) weighs 3.2 ounces, so we did want to minimize the weight of the pager motor and other components in order to keep the stick below 3.2 ounces. We decided upon a 6.35 mm diameter pager motor because it could snugly fit onto either the stick or the glove for haptic feedback. All the characteristics, included in Figure 20, are within reason to implement.
+				</div>
+				<div id = "text">
+					The accelerometers are mounted to custom designed, 3D printed mounts. To accommodate these mounts, the ends of the sticks were removed and a shallow hole drilled in the top end of the stick, which held a peg on the mount. The mount was designed to fit into the accelerometer breakout board such that little to no other form of fixation was necessary (Figure 5). The engineering drawing for this device is shown in the Appendix under Figure 18. Another larger hole was drilled in the butt-end of the stick, which was just large enough to fit the pager motors. The pager motors were fit snuggly into this hole, then secured with hot glue.
+				</div>
+				<figure>
+  					<img src="assets/img/mount.jpg" id = "img-cont">
+  					<figcaption>Figure 5: The 3D printed mount with the accelerometer attached.</figcaption>
+				</figure>
+				<div id = "text">
+					Haptic feedback was determined using only the accelerometers. We chose not to incorporate the Leap motion because of the complexities of transferring information from the Arduino to Unity. The ADXL345 interfaces nicely with Arduino, and many libraries exist for communication. We decided that only the magnitudes in the x and y directions were necessary, neglecting the z direction that runs axially down the stick. If this magnitude surpasses a threshold value, the pager motors are triggered.
+				</div>
+				<div id = "text">
+					The pager motors (1597-1246-ND) are controlled by the Arduino via pulse-width modulation (PWM). The intensity and duration of each burst were determined through experimentation - we wanted the user to feel a buzz that mimicked hitting a drum, but also ensure that it did not trail into the next drum strike. The motors were controlled using the same Arduino as the accelerometers.
+				</div>
+				<figure>
+  					<img src="assets/img/drumstickreal.png" id = "img-cont">
+  					<figcaption>Figure 6: Final drumstick assembly.</figcaption>
+				</figure>
+				<div id = "text">
+					The circuit diagram for the accelerometer/pager motor system can be seen in the Appendix under Figure 17.
 				</div>
 				<div id = "sub-title">
-					Accelerometer Frequency
+					Kick Pedal
 				</div>
 				<div id = "text">
-					Adding on top of the previous section, we would like to be able to sample the accelerometer to at a frequency higher than 40 Hz and hopefully around 200 Hz. We can sample the accelerometer at a faster rate in order to decrease the latency and use the most recent position information to classify the drum sound.
+					The kick drum and hi-hat are critical components to any drum set, and both are controlled at least in part through the use of a foot pedal. In order to replicate the feel of a traditional drum set, it is necessary to create a lightweight, but still realistic, version of the traditional kick drum pedal.
+				</div>
+				<div id = "text">
+					We decided to use an existing pedal rather than fabricate our own - a Guitar Hero video game controller. The device includes the pedal, spring, as well as the button used by the game system to trigger the kick drum. The figure below shows the pedal and attached 3.5mm cable used by the game system.
+				</div>
+				<figure>
+  					<img src="assets/img/Pedal.png" id = "img-cont">
+  					<figcaption>Figure 7: The guitar hero pedal to be used for the kick drum.</figcaption>
+				</figure>
+				<div id = "text">
+					Though weight and portability are of great importance, a pre-made pedal has been selected to shorten the design and build process. Future developmental goals consist of shortening the overall pedal to decrease the size and weight of the device, and choosing materials that will give the user control as well as durability, or possibly eliminating the traditional pedal design all together and creating a more compact pad.
+				</div>
+				<div id = "text">
+					For the purposes of the VPS, both position and velocity of the kick drum pedal are important: position of the pedal will denote when the kick drum is hit, while the angular velocity of the pedal will control volume. This was accomplished using a linear potentiometer as a voltage divider. The potentiometer was mounted such that the action of the pedal will cause a corresponding change in resistance. As the resistance changes, we are  able to measure a change in voltage and determine the angle of the kick pedal. Differentiating this data gives a rough estimate of velocity to be used to determine the volume of the corresponding sound.
+				</div>
+				<figure>
+  					<img src="assets/img/Pot.png" id = "img-cont">
+  					<figcaption>Figure 8: The potentiometer see Appendix being used in the Guitar Hero setup.</figcaption>
+				</figure>
+				<figure>
+  					<img src="assets/img/PedalSetup.png" id = "img-cont">
+  					<figcaption>Figure 9: This figure demonstrates how the potentiometer will be utilized in the kick drum setup.</figcaption>
+				</figure>
+				<div id = "text">
+					The schematic below shows how the potentiometer can be used to measure the position of the kick drum pedal.
+				</div>
+				<figure>
+  					<img src="assets/img/potentiometerDiag.png" id = "img-cont">
+  					<figcaption>Figure 10: The schematic shows how the potentiometer can be used to measure the position of the kick drum pedal.</figcaption>
+				</figure>
+				<div id = "text">
+					The resistance of the potentiometer will change in a way that is proportional to the movement of the slider (Resistance is $R = \frac{\rho l}{A}$, $l$ is length, $\rho$ resistivity, and $A$ cross sectional area). Figure X(a) can be equated to Figure X(b) for any position of the slider, where $ R_1 +  R_2 = 10 k\Omega$. The voltage output to the ADC can be computed as: 
+					$$V_{ADC} = (5V) \frac{R_2}{R_1+R_2} = (5V) \frac{R_2}{10 k\Omega}$$
+					As can be seen in the equation above, the output voltage is also proportional to the movement of the slider. The position of the kick pedal can be determined once at least two known points are determined.
+				</div>
+				<div id = "text">
+					An Arduino functions as an Analog to Digital Converter (ADC). The arduino can function as a 10 bit ADC, which over a range of 0 to 5 V gives a resolution of about 4.8 mV. The To get an estimate of the velocity of the kick, we selected to take an average of the velocity after the kick pedal passes a certain height threshold. The Guitar Hero pedal has a movement range of 3.5 cm, so we chose to use the range of velocities found while the pedal was depressed greater than 3 cm. This average velocity was then mapped to a value from 1 to 10, then passed to Unity via serial monitor.
 				</div>
 				<div id = "sub-title">
-					Pager Motor/Accelerometer Selection
+					Software
 				</div>
 				<div id = "text">
-					The page motor would be added to the back of the gloves, but originally it was selected for adding onto the stick. The heaviest standard drumstick (size 5A) weighs 3.2 ounces, so we did want to minimize the weight of the pager motor and other components in order to keep the stick below 3.2 ounces. 
+					The software interface is essentially shown in the Concept Description section. We are using the Unity game engine to develop our software interface because it allows for the extension to various platforms and interfaces well with the Leap Motion. 
 				</div>
 				<div id = "text">
-					The Pager motor we decided upon is a 6.35 mm diameter pager motor because it could snugly
-					fit onto either the stick or the glove for haptic feedback. All the characteristics,
-					included in Figure 12, are within reason to implement.
+					The game environment for the VPS has two types of game objects: the drums and the sticks. Each game object has a region called a collider that is used to detect collisions with other game objects. Unity allows for actions to be taken on collision start, which we use to produce the correct sound when each drum is struck. Sound is produced through a sound module. Additionally, Unity can measure the magnitude of each collision, allowing for volume control. The schematic is shown below in Figure 11. Our game software basically works in the following steps:
 				</div>
+				<ol>
+					<li>Arduino passes kick drum velocity data to Unity, and Unity program is actively listening for data every timestep.</li>
+					<li>In the Unity environment, drums and two spheres representing the tip of the tracked sticks are defined as game objects and they are set to “rigid bodies”, and we can tune the associated “collider” position and size. When two colliders meet, the system would detect a “collision” between two rigid bodies.</li>
+					<li>The drum game objects have audiosource attached, and they would generate a sound upon a collision.</li>
+					<li>The sphere has a position update script attached. It utilizes the tool tracking feature of Leap motion sensor, and we have to scale and tune the positions to match normal human motion.</li>
+					<li>The bass drum has additional script attached, which listens to the data from serial port. Once it receives the kick drum velocity data, it would activate the audio source attached and play a audio with volume adjusted by the kick drum velocity.</li>
+				</ol>
+				<figure>
+  					<img src="assets/img/unitydiag.png" id = "img-cont">
+  					<figcaption>Figure 11: This flowchart demonstrates the flow of information into and through the Unity game environment.</figcaption>
+				</figure>
 				<div id = "text">
-					Although the accelerometer is not fully necessary for the implementation of an air drum set, it will allow us to (1) decrease the latency between the physical motion and the sound output and (2) increase resolution of acceleration data for better amplitude differentiation. 
+					The figure below shows the final software interface of the VPS. The limited size of the drum set was selected to reduce the chance of a user missing the intended drum. The sticks are represented by the green and blue spheres which track the end of each drumstick. These have been initialized such that the green stick is the leftmost stick, and the blue stick is the rightmost stick.
 				</div>
-				<div id = "text">
-					In selecting the type of accelerometer, we must take a variety of characteristics into account. First of all, the device must be small because we are attaching it to a pair of gloves. The size is important because we want to maintain a sleek form factor that is not going to distract from the general use of the device. One of the fundamental classifications for accelerometers is how many directions of measurements the chip takes (axes). For our case, the minimum we should have is a 2-axis accelerometer. This is because we are only really interested in the planar acceleration perpendicular to the drumstick. Despite this, there is a lot more availability of 3-axis accelerometers. Furthermore, in order to decrease latency, we looked for accelerometers with an Serial Peripheral Interface protocol setup, which provides the fastest sampling frequency among other common protocols such as I2C and UART. The last quality necessary in the accelerometer is the acceleration range. Reference [9] found that the range of accelerations we should expect is from 0-7 g's (relative to Earth’s standard gravity). Although this article contains data from trials, we are unsure as to the accuracy of the data or how they triggered the drum; therefore, we will be conducting our own testing to determine ideal ranges for accelerations and tailor the accelerometer to these conditions.
-				</div>
-				<div id = "text">
-					We ultimately decided upon using the ADXL345 for several reasons. First of all, it satisfies all the conditions delineated in the previous paragraph. It seems to be a general purpose 3-axis SPI accelerometer with the added advantage that there are pre-written Arduino codes to process the information. Additionally, it has an adjustable range so if we determine that the $\pm$ 8g range is not enough, we can increase it to $\pm$ 16g. 
-				</div>
-				<div id = "sub-title"> 
-					Potentiometer Selection
-				</div>
-				<div id = "text">
-					There were two important factors considered when choosing which linear potentiometer to use for the kick drum/hi-hat pedals: (1) power consumption and (2) overall size. Power consumed by a passive device is $P = IV$, where $I$ is the current passing through the device and $V$ is the potential placed across the device. Assuming Ohmic behavior ($V = IR$ where $R$ is the resistance of the device), this can be rewritten as $P = \frac{V^2}{R}$. With a resistance of on the order of k$\Omega$, we will be able to place a voltage on the order of Volts across the device and burn only a few mW of power. 
-				</div>
-				<div id = "text">
-					The second reason for choosing this particular potentiometer is the overall length of the device. 30 mm gives enough movement to distinguish position accurately while still fitting within the existing geometry of the $\text{Guitar Hero}^\text{TM}$ kick pedal.
-				</div>
+				<figure>
+  					<img src="assets/img/unityrunning.png" id = "img-cont">
+  					<figcaption>Figure 12: his picture is of the Unity environment with the game running. The glowing spheres are where the drum stick "heads" exist in the virtual environment.</figcaption>
+				</figure>
+
 			</div>
 		</div>
 	</div>

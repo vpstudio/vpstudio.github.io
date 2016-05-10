@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title>VPS - Final Design</title>
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800' rel='stylesheet' type='text/css'>
+	<script src="assets/js/jquery-1.9.1.js"></script>
+	<script src="assets/js/script.js"></script>
+	<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML">
+</script>
+</head>
+
+<body>
+	<div id = "background-overlay"> 
+		<div id = "top-background"> 
+			<div id = "top-bar"> 
+			<img src="assets/img/menu.svg" id = "menu-item">
+			<a href="index.html"><img src="assets/img/VPS_Logo_NoBackground.png" id = "logo"></a>
+			<a href="aboutus.html"><div id="about-us" >About Us</div></a>
+		</div>
+		</div>
+		<div id = "side-bar" class = "side-bar-active"> 
+			<a href="executivesummary.html"><div id="link" >Executive Summary</div></a>
+			<a href="introduction.html"><div id="link" >Introduction</div></a>
+			<a href="specifications.html"><div id="link" >Requirements/ Specifications</div></a>
+			<a href="conceptgen.html"><div id="link" >Concept Generation</div></a>
+			<a href="conceptsel.html"><div id="link" >Concept Selection</div></a>
+			<a href="conceptdesc.html"><div id="link" >Concept Description</div></a>
+			<a href="paramanalysis.html"><div id="link" >Engineering Analysis/Design</div></a>
+			<div id="link" >Manufacturing and Testing</div>
+			<a href="discussion.html"><div id="link" >Discussion</div></a>
+			<a href="conclusion.html"><div id="link" >Conclusion</div></a>
+			<a href="appendix.html"><div id="link" >Appendix</div></a>
+		</div>
+		<div class = "content-overlay content-overlay-active">
+		<div id = "content">
+			<div id = "main-title">
+				Manufacturing and Test Results
+			</div>
+			<div id = "exec-summary">
+				<div id = "text">
+					The drumsticks required the most modification to allow for haptic feedback. The accelerometer mounts were 3D printed out of VeroClear RGD810. The drumsticks had their tips removed before two holes were drilled axially to accommodate the accelerometer mounts and pager motors. 
+				</div>
+				
+				<div id = "text">
+					The kick-drum required less modification. We found that the design of the GuitarHero pedal allowed for the potentiometer to be mounted on the underside of the pedal. However, this location was slightly too small for the potentiometer, so a small block of wood was placed under the end of the pedal to increase the space for the hardware. The 3.5 mm headphone jack was also removed, as it was deemed unhelpful for our project.
+				</div>
+				<div id = "text">
+					The completed VPS underwent preliminary testing as distinct modules: Visual interface and Leap motion, drumsticks with incorporated accelerometers and pager motors, and the kick pedal.
+				</div>
+				<div id = "text">
+					For proper operation, it is essential that the Leap Motion can accurately track the position of both sticks and for Unity to accurately render their position in the visual interface. Initial was done using pencils and unmodified sticks, and we found that the motion tracking and rendering was satisfactory. Once the modified sticks were available, the system was again tested to ensure that the wires and accelerometer did not interfere with the tracking. The only trouble was encountered when the Leap Motion initialized the stick objects incorrectly - we would occasionally find that directions could be switched, or one stick might not appear at all. Removing both sticks from the field of vision of the Leap sensor and bringing them back in slowly caused the Leap to initialize them properly.
+				</div>
+				<div id = "text">
+					To simulate actual drum playing, the pager motors need to be triggered when the user mimes a drum strike. Once the sticks were completed, experimentation was done to determine the acceleration threshold that best fit an intended drum strike. We also determined the optimum length and intensity of each motor burst. It is important to deliver a sharp buzz, but also ensure that we are not consuming excessive power. During testing, we found that occasionally the Arduino would become frozen during the motor burst, resulting in a constantly vibrating stick. The addition of pull-up resistors at the input pins of the accelerometers seemed to help some, but that did not fully solve the problem. This issue was ameliorated by the inclusion of the voltage follower setup for the pager motors. This leads to the conclusion that the Arduino can freeze if too much current is being pulled at once.
+				</div>
+				<div id = "text">
+					The kick pedal must output a single average velocity each time it is depressed. Testing was performed at various speeds to determine the maximum velocity achievable by the user. This value was used to map each output to the range 1 to 10, which was used by the unity environment. We did occasionally find that the kick pedal would output duplicate values, but the cause was never determined. 
+				</div>
+				<div id = "text">
+					Once each module was determined to be functioning correctly, the entire device was connected and tested. The only physical connection that needed to be made was the kick drum Arduino to the computer running the Unity environment. Very little tinkering was required to get the device working - the only change was done in the Unity code. We found the need to revert back to a previous version as we found there was a strange bug in the in collision detection.
+				</div>
+				<div id = "text">
+					Overall, the VPS functioned as designed. The interface rollback, however, removed the volume functionality of the device.
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>
